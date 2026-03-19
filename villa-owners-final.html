@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency AI — For Villa Owners · Santa Teresa</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Barlow', sans-serif; font-weight: 300; background: #ffffff; color: #0a0a0a; overflow-x: hidden; }
+:root { --black: #0a0a0a; --white: #ffffff; --gold: #c9a84c; --gold-light: #e8d5a0; --gray-line: #e0e0e0; --gray-text: #555555; --off-white: #f7f5f2; }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; transition: background 0.3s; }
+.nav.dark { background: rgba(10,10,10,0.96); backdrop-filter: blur(10px); }
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+.btn { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; border: 1px solid; background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; line-height: 1; }
+.btn-white { border-color: var(--white); color: var(--white); } .btn-white:hover { background: var(--white); color: var(--black); }
+.btn-black { border-color: var(--black); color: var(--black); } .btn-black:hover { background: var(--black); color: var(--white); }
+.btn-gold { border-color: var(--gold); color: var(--gold); } .btn-gold:hover { background: var(--gold); color: var(--black); }
+.btn-ghost { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.7); } .btn-ghost:hover { border-color: var(--white); color: var(--white); }
+.btn-nav { border: 1px solid var(--white); color: var(--white); padding: 0.5rem 1.2rem; } .btn-nav:hover { background: var(--white); color: var(--black); }
+.marquee { background: var(--gold); padding: 0.85rem 0; overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-flex; animation: marquee-scroll 28s linear infinite; }
+.marquee-track span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--black); padding: 0 2rem; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.section { padding: 7rem 3rem; }
+.section-white { background: var(--white); color: var(--black); }
+.section-offwhite { background: var(--off-white); color: var(--black); }
+.section-black { background: var(--black); color: var(--white); }
+.label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; display: block; }
+.heading-lg { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 0.95; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2rem; }
+.body-text { font-size: 0.93rem; line-height: 1.88; }
+.body-text p { margin-bottom: 1.3rem; }
+.body-text p:last-child { margin-bottom: 0; }
+.body-text.light { color: rgba(255,255,255,0.58); }
+.body-text.dark { color: #3a3a3a; }
+.pull-quote { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 2vw, 1.55rem); line-height: 1.65; color: var(--gold); border-left: 3px solid var(--gold); padding: 1.5rem 2.5rem; margin: 3rem 0; }
+.inner { max-width: 1300px; margin: 0 auto; }
+.inner-mid { max-width: 920px; margin: 0 auto; }
+.inner-narrow { max-width: 780px; margin: 0 auto; }
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 3rem 5rem; overflow: hidden; background-size: cover; background-position: center; background-color: var(--black); }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.80) 100%); }
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: hero-up 0.8s 0.2s forwards; }
+.hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(5rem, 14vw, 14rem); line-height: 0.85; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; opacity: 0; animation: hero-up 0.8s 0.35s forwards; }
+.hero-subtitle { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(1rem, 1.8vw, 1.3rem); color: rgba(255,255,255,0.7); margin-bottom: 1.2rem; max-width: 580px; opacity: 0; animation: hero-up 0.8s 0.5s forwards; }
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: hero-up 0.8s 0.95s forwards; }
+@keyframes hero-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gray-line); margin-top: 3rem; }
+.card { padding: 2.5rem; background: var(--white); border-top: 3px solid transparent; transition: border-color 0.3s; }
+.card:hover { border-top-color: var(--gold); }
+.card-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.1; margin-bottom: 1rem; color: var(--black); }
+.testimonial { padding: 7rem 3rem; text-align: center; position: relative; overflow: hidden; background-size: cover; background-position: center; background-color: var(--black); }
+.testimonial::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.75); }
+.testimonial-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+.testimonial-quote { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.6rem); line-height: 1.7; color: var(--white); margin-bottom: 2.5rem; }
+.testimonial-quote::before { content: '\201C'; } .testimonial-quote::after { content: '\201D'; }
+.testimonial-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+.faq-item { border-bottom: 1px solid var(--gray-line); }
+.faq-question { width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; cursor: pointer; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--black); text-align: left; gap: 1rem; }
+.faq-icon { font-size: 1.2rem; font-weight: 300; flex-shrink: 0; transition: transform 0.3s; line-height: 1; }
+.faq-question.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { font-size: 0.88rem; line-height: 1.88; color: var(--gray-text); max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+.faq-answer.open { max-height: 300px; padding-bottom: 1.5rem; }
+.launch-banner { background: var(--black); padding: 7rem 3rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+.launch-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.launch-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(5rem, 14vw, 13rem); line-height: 0.85; text-transform: uppercase; letter-spacing: -0.02em; color: var(--white); margin-bottom: 1rem; }
+.launch-date { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+.launch-body { font-size: 0.9rem; line-height: 1.85; color: rgba(255,255,255,0.4); max-width: 440px; margin: 0 auto 3rem; }
+.launch-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+footer { background: var(--black); padding: 5rem 3rem 2.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+.footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); text-decoration: none; display: block; margin-bottom: 1.2rem; }
+.footer-tagline { font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.9rem; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 300px; }
+.footer-col-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.65rem; }
+.footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom span, .footer-bottom a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; }
+.footer-bottom a:hover { color: var(--gold); }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 960px) {
+  .nav { padding: 1.2rem 1.5rem; }
+  .nav-links a:not(.btn-nav) { display: none; }
+  .section { padding: 5rem 1.5rem; }
+  .hero { padding: 0 1.5rem 4rem; }
+  .two-col { grid-template-columns: 1fr; gap: 3rem; }
+  .three-col { grid-template-columns: 1fr; }
+  .split-grid { grid-template-columns: 1fr !important; }
+  .split-img { min-height: 300px; order: -1; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .launch-buttons { flex-direction: column; align-items: center; }
+  .stats-mini { grid-template-columns: 1fr 1fr !important; }
+  .kg-grid { grid-template-columns: 1fr 1fr !important; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="nav-logo">Agency <span style="color:var(--gold)">AI</span></a>
+  <div class="nav-links">
+    <a href="#">For Agencies</a>
+    <a href="#">For Surf Schools</a>
+    <a href="#" class="btn btn-nav">Get Started</a>
+  </div>
+</nav>
+
+<section class="hero" style="background-image:url('wil-stewart-K_TbABnVzHo-unsplash.jpg')">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Agency AI · Santa Teresa, Costa Rica</p>
+    <h1 class="hero-title">Your Villa.<br>Fully Marketed.</h1>
+    <p class="hero-subtitle">AI content that sells the lifestyle — not just the square metres.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-white">See How It Works</a>
+      <a href="#" class="btn btn-ghost">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Listing Descriptions</span><span>·</span><span>Airbnb & VRBO Copy</span><span>·</span><span>Instagram Captions</span><span>·</span><span>Lead Follow-Ups</span><span>·</span><span>SEO Glossary Pages</span><span>·</span><span>EN · ES · FR · DE</span><span>·</span><span>Rental Income Reports</span><span>·</span><span>Guest Welcome Guides</span><span>·</span><span>Knowledge Graph</span><span>·</span>
+    <span>Listing Descriptions</span><span>·</span><span>Airbnb & VRBO Copy</span><span>·</span><span>Instagram Captions</span><span>·</span><span>Lead Follow-Ups</span><span>·</span><span>SEO Glossary Pages</span><span>·</span><span>EN · ES · FR · DE</span><span>·</span><span>Rental Income Reports</span><span>·</span><span>Guest Welcome Guides</span><span>·</span><span>Knowledge Graph</span><span>·</span>
+  </div>
+</div>
+
+<section class="section section-white">
+  <div class="inner">
+    <div class="two-col">
+      <div class="reveal">
+        <span class="label">The Problem</span>
+        <h2 class="heading-lg">Your villa is extraordinary.<br>Your content isn't.</h2>
+        <div class="body-text dark">
+          <p>Santa Teresa villas sell a lifestyle — the jungle, the surf, the silence, the light. But most listings sound like every other property on the internet. Generic descriptions. No voice. No soul. No reason for a buyer to choose yours over the one next door.</p>
+          <p>Even if you know your property deserves better copy, writing it takes time you don't have. Following up leads, building SEO pages, posting on Instagram, translating for European buyers — it all takes time you don't have.</p>
+          <p>Agency AI fixes that. One system. Your voice. Everything generated in minutes.</p>
+        </div>
+        <a href="#" class="btn btn-black" style="margin-top:2.5rem">Set Up My System</a>
+      </div>
+      <div class="reveal">
+        <div class="stats-mini" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          <div style="background:var(--off-white);padding:2.5rem 2rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3.5rem;line-height:1;color:var(--gold);">8h</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-top:0.5rem;">saved per week</div>
+          </div>
+          <div style="background:var(--black);padding:2.5rem 2rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3.5rem;line-height:1;color:var(--gold);">2min</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.5rem;">full listing kit</div>
+          </div>
+          <div style="background:var(--black);padding:2.5rem 2rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3.5rem;line-height:1;color:var(--gold);">4</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.5rem;">languages, one click</div>
+          </div>
+          <div style="background:var(--off-white);padding:2.5rem 2rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3.5rem;line-height:1;color:var(--gold);">6×</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-top:0.5rem;">more content published</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-offwhite">
+  <div class="inner-mid reveal">
+    <div class="pull-quote">"Instead of the AI just knowing this is a 3-bed villa, it knows the villa is in Santa Teresa, that your buyers are international surf-lifestyle seekers, and that your voice is relaxed but professional — all of that fires together in every single output."</div>
+  </div>
+</section>
+
+<section class="section section-black">
+  <div class="inner">
+    <div class="split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;">
+      <div class="split-img reveal" style="background-image:url('hans-eiskonen--RQ8tGcn2EY-unsplash.jpg');min-height:520px;background-size:cover;background-position:center;"></div>
+      <div class="reveal">
+        <span class="label">The Knowledge Graph</span>
+        <h2 class="heading-lg" style="color:var(--white)">This isn't ChatGPT.<br>It's your villa's brain.</h2>
+        <div class="body-text light">
+          <p>Most AI tools write generic content. Agency AI is built on a knowledge graph — a structured map connecting your property, your brand voice, your leads, and your market. Every connection matters.</p>
+          <p>It knows your oceanfront villa attracts European investors. It knows concession land needs different language than titled property. It knows your tone is warm but authoritative. All of that fires together every time content is generated.</p>
+          <p>The result feels written by someone who knows Santa Teresa — because the system does.</p>
+        </div>
+        <div class="kg-grid" style="margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:1.5rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Brand Voice</div>
+            <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Your tone and identity encoded once — active in every output.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:1.5rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Property Data</div>
+            <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Specs, location, and highlights connected to every piece of content.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:1.5rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Buyer Profiles</div>
+            <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Investor, lifestyle buyer, rental seeker — each gets messaging built for them.</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:1.5rem;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">Local Market</div>
+            <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Santa Teresa, Mal Pais, Playa Hermosa — baked into every output.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="inner">
+    <span class="label reveal">What It Does For Your Villa</span>
+    <h2 class="heading-lg reveal">Everything your property needs. Automated.</h2>
+    <div class="three-col">
+      <div class="card reveal">
+        <div class="card-num">Content</div>
+        <h3 class="card-title">Listing Kit</h3>
+        <ul style="list-style:none;margin-top:1rem;">
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Full listing description, your voice</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Headline + highlights + CTA</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Airbnb & VRBO optimised copy</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— EN + ES + FR + DE output</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;">— Ready in 2 minutes</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-num">Marketing</div>
+        <h3 class="card-title">Social & Ads</h3>
+        <ul style="list-style:none;margin-top:1rem;">
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— IG, Facebook, WhatsApp captions</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Google & Meta ad copy</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Video & reel scripts</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Seasonal rental promos</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;">— Monthly newsletter</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-num">SEO</div>
+        <h3 class="card-title">Glossary Pages</h3>
+        <ul style="list-style:none;margin-top:1rem;">
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— "Titled vs concession land"</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— "Transfer tax Costa Rica"</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— "ASADA water rights"</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— "Closing costs Costa Rica"</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;">— Capture buyers before they search</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-num">Leads</div>
+        <h3 class="card-title">Follow-Up</h3>
+        <ul style="list-style:none;margin-top:1rem;">
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Personalised per lead profile</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— 3-part nurture email sequence</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Buyer welcome pack on inquiry</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Viewing notes auto-generated</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;">— Referral thank-you messages</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-num">Rental</div>
+        <h3 class="card-title">Guest System</h3>
+        <ul style="list-style:none;margin-top:1rem;">
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Inquiry replies in guest's language</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Branded welcome guide</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Concierge recommendation content</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— House rules, on-brand</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;">— Monthly owner reports</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-num">Operations</div>
+        <h3 class="card-title">Admin Tools</h3>
+        <ul style="list-style:none;margin-top:1rem;">
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— ROI & rental income projections</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Property comparison summaries</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Offer letter writer</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;border-bottom:1px solid var(--gray-line);">— Closing checklist per deal</li>
+          <li style="font-size:0.85rem;line-height:1.8;color:#555;padding:0.4rem 0;">— Photography brief per property</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-offwhite">
+  <div class="inner">
+    <div class="split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;">
+      <div class="reveal">
+        <span class="label">SEO Glossary Pages</span>
+        <h2 class="heading-lg">Own the search.<br>Before the listing.</h2>
+        <div class="body-text dark">
+          <p>International buyers in Santa Teresa search "titled property Costa Rica" and "concession land explained" before they ever search a specific address. Whoever owns those search results owns the conversation.</p>
+          <p>Most villa owners never build these pages because it takes time. With Agency AI, a full library of SEO-ready glossary pages — each in your brand voice, linked to your listings, in EN and ES — can be generated and deployed in an afternoon.</p>
+        </div>
+        <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          <div style="background:var(--white);padding:1.2rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase;border-left:2px solid var(--gold);">Titled vs concession land</div>
+          <div style="background:var(--white);padding:1.2rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase;border-left:2px solid var(--gold);">Transfer tax explained</div>
+          <div style="background:var(--white);padding:1.2rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase;border-left:2px solid var(--gold);">ASADA water rights</div>
+          <div style="background:var(--white);padding:1.2rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase;border-left:2px solid var(--gold);">Residency by investment</div>
+          <div style="background:var(--white);padding:1.2rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase;border-left:2px solid var(--gold);">SRL vs SA structure</div>
+          <div style="background:var(--white);padding:1.2rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.05em;text-transform:uppercase;border-left:2px solid var(--gold);">Closing costs Costa Rica</div>
+        </div>
+      </div>
+      <div class="split-img reveal" style="background-image:url('matthew-brodeur-DH_u2aV3nGM-unsplash.jpg');min-height:560px;background-size:cover;background-position:center;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" style="background-image:url('mandy-choi-_qZ0us4az20-unsplash.jpg')">
+  <div class="testimonial-inner">
+    <div class="testimonial-quote">Before this system I was spending an entire Sunday writing listing copy for one property. Now I input the details and the whole kit is done before my coffee gets cold.</div>
+    <div class="testimonial-name">Villa owner, Santa Teresa — 4 properties</div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="inner-mid">
+    <span class="label reveal">Questions</span>
+    <h2 class="heading-lg reveal">Everything you need to know.</h2>
+    <div style="margin-top:3rem;">
+      <div class="faq-item reveal">
+        <button class="faq-question">Do I need technical skills to use it? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">None at all. You input property details — the system handles everything. No prompts, no AI fiddling, no technical setup on your end. We configure the whole system for you in 48 hours.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">What languages does it support? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">English and Spanish are included in every plan. French and German are available as an expansion — essential if your buyers come from Europe, which most do in the Santa Teresa market.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Will it sound like me — or like generic AI? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">Your voice. We build a brand file from your tone, vocabulary, and identity before anything is generated. The AI doesn't guess what you sound like — it knows. Every output runs through that brand file automatically.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">What is a knowledge graph and why does it matter? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">A knowledge graph is a structured map of how your property, your brand, your leads, and your market all connect. It means the system knows your villa targets European investors, that concession land needs different language than titled property, and that your tone is relaxed but professional — all firing together in every output. That's what makes the content feel human, not robotic.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Can it help with Airbnb and VRBO listings? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">Yes — platform-optimised descriptions for Airbnb and VRBO are included. Each platform gets its own copy, not a paste from your website. The system knows what each platform's algorithm responds to.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">How quickly can I be set up? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">48 hours from the time you get in touch. We configure your brand file, install all scripts, test bilingual output, and hand over a fully working system. You're generating content the same week.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="launch-banner">
+  <div class="inner-narrow">
+    <p class="launch-eyebrow">Agency AI · Villa Owners</p>
+    <h2 class="launch-title">Set Up<br>Your System.</h2>
+    <p class="launch-date">Configured in 48 hours · Santa Teresa, Costa Rica</p>
+    <p class="launch-body">Your villa deserves content as extraordinary as the property itself. Get in touch and we'll build your system around your voice, your listings, and your market.</p>
+    <div class="launch-buttons">
+      <a href="#" class="btn btn-gold">Get Started</a>
+      <a href="#" class="btn btn-white">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="footer-logo">Agency <span style="color:var(--gold)">AI</span></a>
+        <p class="footer-tagline">Real estate content infrastructure. Built for villa owners who take their brand seriously.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Pages</p>
+        <ul class="footer-links">
+          <li><a href="#">For Agencies</a></li>
+          <li><a href="#">For Surf Schools</a></li>
+          <li><a href="#">For Villa Owners</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Contact</p>
+        <ul class="footer-links">
+          <li><a href="#">Get Started</a></li>
+          <li><a href="#">Book a Demo</a></li>
+          <li><a href="#">Ask a Question</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Agency AI · Santa Teresa, Costa Rica</span>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('dark', window.scrollY > 50); });
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      btn.classList.toggle('open');
+      answer.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
