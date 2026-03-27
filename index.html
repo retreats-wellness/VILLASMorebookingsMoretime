@@ -1,279 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agency AI — More Bookings For Your Villa</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: 'Barlow', sans-serif; font-weight: 300; background: #ffffff; color: #0a0a0a; overflow-x: hidden; }
-:root { --black: #0a0a0a; --white: #ffffff; --gold: #c9a84c; --gold-light: #e8d5a0; --gray-line: #e0e0e0; --gray-text: #555555; --off-white: #f7f5f2; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency AI — More Bookings For Your Villa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: 'Barlow', sans-serif; font-weight: 300; background: #ffffff; color: #0a0a0a; overflow-x: hidden; }
+        :root { --black: #0a0a0a; --white: #ffffff; --gold: #c9a84c; --gold-light: #e8d5a0; --gray-line: #e0e0e0; --gray-text: #555555; --off-white: #f7f5f2; }
 
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; transition: background 0.3s; }
-.nav.dark { background: rgba(10,10,10,0.96); backdrop-filter: blur(10px); }
-.nav.light { background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); }
-.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); text-decoration: none; transition: color 0.3s; }
-.nav.light .nav-logo { color: var(--black); }
-.nav-links { display: flex; align-items: center; gap: 2.5rem; }
-.nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
-.nav.light .nav-links a { color: rgba(0,0,0,0.6); }
-.nav-links a:hover { color: var(--white); }
-.nav.light .nav-links a:hover { color: var(--black); }
-.btn { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; border: 1px solid; background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; line-height: 1; }
-.btn-white { border-color: var(--white); color: var(--white); } .btn-white:hover { background: var(--white); color: var(--black); }
-.btn-black { border-color: var(--black); color: var(--black); } .btn-black:hover { background: var(--black); color: var(--white); }
-.btn-gold { border-color: var(--gold); color: var(--gold); } .btn-gold:hover { background: var(--gold); color: var(--black); }
-.btn-ghost { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.7); } .btn-ghost:hover { border-color: var(--white); color: var(--white); }
-.btn-ghost-dark { border-color: rgba(0,0,0,0.25); color: rgba(0,0,0,0.6); } .btn-ghost-dark:hover { border-color: var(--black); color: var(--black); }
-.btn-nav { border: 1px solid var(--white); color: var(--white); padding: 0.5rem 1.2rem; } .btn-nav:hover { background: var(--white); color: var(--black); }
-.nav.light .btn-nav { border-color: var(--black); color: var(--black); } .nav.light .btn-nav:hover { background: var(--black); color: var(--white); }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; transition: background 0.3s; }
+        .nav.light { background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); color: var(--black); }
+        .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); text-decoration: none; }
+        .nav.light .nav-logo { color: var(--black); }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; }
+        .nav.light .nav-links a { color: rgba(0,0,0,0.6); }
+        
+        .btn { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; border: 1px solid; background: transparent; cursor: pointer; transition: 0.2s; line-height: 1; }
+        .btn-white { border-color: var(--white); color: var(--white); } .btn-white:hover { background: var(--white); color: var(--black); }
+        .btn-gold { border-color: var(--gold); color: var(--gold); } .btn-gold:hover { background: var(--gold); color: var(--black); }
+        .btn-black { border-color: var(--black); color: var(--black); } .btn-black:hover { background: var(--black); color: var(--white); }
+        .btn-ghost { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.7); } .btn-ghost:hover { border-color: var(--white); color: var(--white); }
 
-.marquee { background: var(--gold); padding: 0.85rem 0; overflow: hidden; white-space: nowrap; }
-.marquee-track { display: inline-flex; animation: marquee-scroll 28s linear infinite; }
-.marquee-track span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--black); padding: 0 2rem; }
-@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        /* HERO */
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 3rem 6rem; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; animation: ken-burns 18s ease-in-out infinite alternate; }
+        @keyframes ken-burns { from { transform: scale(1); } to { transform: scale(1.06); } }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 820px; }
+        .hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.85; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; }
+        .gold { color: var(--gold); }
 
-.section { padding: 7rem 3rem; }
-.section-white { background: var(--white); color: var(--black); }
-.section-offwhite { background: var(--off-white); color: var(--black); }
-.section-black { background: var(--black); color: var(--white); }
-.label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; display: block; }
-.heading-lg { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 0.95; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2rem; }
-.body-text { font-size: 0.93rem; line-height: 1.88; }
-.body-text p { margin-bottom: 1.3rem; }
-.body-text p:last-child { margin-bottom: 0; }
-.body-text.light { color: rgba(255,255,255,0.58); }
-.body-text.dark { color: #3a3a3a; }
-.pull-quote { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 2vw, 1.55rem); line-height: 1.65; color: var(--gold); border-left: 3px solid var(--gold); padding: 1.5rem 2.5rem; margin: 3rem 0; }
-.inner { max-width: 1300px; margin: 0 auto; }
+        /* SECTIONS */
+        .section { padding: 7rem 3rem; }
+        .section-white { background: var(--white); color: var(--black); }
+        .section-offwhite { background: var(--off-white); color: var(--black); }
+        .section-black { background: var(--black); color: var(--white); }
+        .inner { max-width: 1300px; margin: 0 auto; }
+        .label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; display: block; }
+        .heading-lg { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 0.95; text-transform: uppercase; margin-bottom: 2rem; }
+        
+        /* MARQUEE */
+        .marquee { background: var(--gold); padding: 0.85rem 0; overflow: hidden; white-space: nowrap; }
+        .marquee-track { display: inline-flex; animation: marquee-scroll 28s linear infinite; }
+        .marquee-track span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--black); padding: 0 2rem; }
+        @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ── HERO ── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 3rem 6rem;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  /* UPDATED PATH FOR VERCEL */
-  background-image: url('/images/12019-sea-2052650.jpg');
-  background-size: cover;
-  background-position: center 40%;
-  z-index: 0;
-  animation: ken-burns 18s ease-in-out infinite alternate;
-}
-@keyframes ken-burns { from { transform: scale(1); } to { transform: scale(1.06); } }
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.72) 80%, rgba(0,0,0,0.85) 100%);
-  z-index: 1;
-}
-.hero-content { position: relative; z-index: 2; max-width: 820px; }
-.hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: hero-up 0.8s 0.2s forwards; }
-.hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.85; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; opacity: 0; animation: hero-up 0.8s 0.35s forwards; }
-.hero-title .gold { color: var(--gold); }
-.hero-subtitle { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(1rem, 1.8vw, 1.3rem); color: rgba(255,255,255,0.75); margin-bottom: 1.2rem; max-width: 520px; opacity: 0; animation: hero-up 0.8s 0.5s forwards; }
-.hero-divider { width: 60px; height: 2px; background: var(--gold); margin: 1.8rem 0; opacity: 0; animation: hero-up 0.8s 0.7s forwards; }
-.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: hero-up 0.8s 0.95s forwards; }
-@keyframes hero-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* GRIDS & CARDS */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+        .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gray-line); margin-top: 3rem; }
+        .card { padding: 2.5rem; background: var(--white); border-top: 3px solid transparent; transition: 0.3s; }
+        .card:hover { border-top-color: var(--gold); }
+        .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 1rem; color: var(--black); }
 
-.hero-scroll-cue {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 3rem;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  opacity: 0;
-  animation: hero-up 1s 1.4s forwards;
-}
-.hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent); animation: scroll-line 1.8s ease-in-out infinite; }
-@keyframes scroll-line { 0%,100%{opacity:0.4;transform:scaleY(1)translateY(0)} 50%{opacity:1;transform:scaleY(1.2)translateY(6px)} }
+        /* IMAGES */
+        .img-strip { display: grid; grid-template-columns: repeat(3, 1fr); height: 320px; gap: 2px; }
+        .img-strip-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .img-full { height: 480px; overflow: hidden; position: relative; }
+        .img-full img { width: 100%; height: 100%; object-fit: cover; }
+        .img-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; height: 400px; }
+        .img-duo img { width: 100%; height: 100%; object-fit: cover; }
 
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gray-line); margin-top: 3rem; }
-.card { padding: 2.5rem; background: var(--white); border-top: 3px solid transparent; transition: border-color 0.3s; }
-.card-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-.card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.1; margin-bottom: 1rem; color: var(--black); }
+        /* SHARED ELEMENTS */
+        .body-text { font-size: 0.93rem; line-height: 1.88; color: #3a3a3a; }
+        .body-text.light { color: rgba(255,255,255,0.58); }
+        .reveal { opacity: 0; transform: translateY(18px); transition: 0.6s ease forwards; }
+        .visible { opacity: 1; transform: translateY(0); }
 
-/* ── IMAGE STRIP ── */
-.img-strip { display: grid; grid-template-columns: repeat(3, 1fr); height: 320px; gap: 2px; }
-.img-strip-item { overflow: hidden; position: relative; }
-.img-strip-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
-.img-strip-item:hover img { transform: scale(1.05); }
-
-.img-full { height: 480px; overflow: hidden; position: relative; }
-.img-full img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; }
-.img-full-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 60%); }
-
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* Direct Bookings Section */
-.direct-booking-section { background: var(--off-white); padding: 7rem 3rem; position: relative; overflow: hidden; }
-.fee-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 3rem 0; }
-.fee-box { padding: 2rem 2.5rem; background: var(--white); }
-.fee-box.fee-bad { background: rgba(200,50,50,0.06); border-top: 3px solid #c83232; }
-.fee-box.fee-good { background: rgba(201,168,76,0.08); border-top: 3px solid var(--gold); }
-.fee-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.fee-label.red { color: #c83232; }
-.fee-label.golden { color: var(--gold); }
-.fee-number { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 3.5rem; line-height: 1; margin-bottom: 0.5rem; }
-.fee-number.red { color: #c83232; }
-.fee-number.golden { color: var(--gold); }
-.fee-desc { font-size: 0.82rem; line-height: 1.65; color: #666; }
-
-@media (max-width: 960px) {
-  .nav { padding: 1.2rem 1.5rem; }
-  .nav-links a:not(.btn-nav) { display: none; }
-  .section { padding: 5rem 1.5rem; }
-  .hero { padding: 0 1.5rem 4rem; min-height: 100vh; }
-  .two-col { grid-template-columns: 1fr; gap: 3rem; }
-  .three-col { grid-template-columns: 1fr; }
-  .fee-comparison { grid-template-columns: 1fr; }
-  .img-strip { grid-template-columns: 1fr; height: auto; }
-  .img-strip-item { height: 220px; }
-  .img-full { height: 280px; }
-}
-</style>
+        @media (max-width: 960px) {
+            .two-col, .three-col, .img-strip, .img-duo { grid-template-columns: 1fr; height: auto; }
+            .section { padding: 5rem 1.5rem; }
+        }
+    </style>
 </head>
 <body>
 
 <nav class="nav" id="mainNav">
-  <a href="#" class="nav-logo">Agency <span style="color:var(--gold)">AI</span></a>
-  <div class="nav-links">
-    <a href="https://calendly.com/vivaenglish79/30min" target="_blank">Book a Call</a>
-    <a href="mailto:vivalancsweert@gmail.com">Contact</a>
-    <a href="https://calendly.com/vivaenglish79/30min" target="_blank" class="btn btn-nav">Get Started</a>
-  </div>
+    <a href="#" class="nav-logo">Agency <span style="color:var(--gold)">AI</span></a>
+    <div class="nav-links">
+        <a href="https://calendly.com/vivaenglish79/30min" target="_blank">Book a Call</a>
+        <a href="https://calendly.com/vivaenglish79/30min" target="_blank" class="btn btn-white" style="padding: 0.5rem 1.2rem;">Get Started</a>
+    </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Agency AI · Villa Owners</p>
-    <h1 class="hero-title">More <span class="gold">Nights.</span><br>More <span class="gold">Booked.</span></h1>
-    <p class="hero-subtitle">AI content that fills your calendar — without filling your evenings with writing.</p>
-    <div class="hero-divider"></div>
-    <div class="hero-buttons">
-      <a href="https://calendly.com/vivaenglish79/30min" target="_blank" class="btn btn-gold">Fill My Calendar</a>
-      <a href="mailto:vivalancsweert@gmail.com" class="btn btn-ghost">Ask a Question</a>
+    <div class="hero-bg" style="background-image: url('12019-sea-2052650.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="label" style="color:var(--gold); margin-bottom:1rem;">Agency AI · Villa Owners</p>
+        <h1 class="hero-title">More <span class="gold">Nights.</span><br>More <span class="gold">Booked.</span></h1>
+        <p style="color:rgba(255,255,255,0.8); font-family:'EB Garamond', serif; font-style:italic; font-size:1.3rem; margin-bottom:2rem;">AI content that fills your calendar — without filling your evenings with writing.</p>
+        <div class="hero-buttons" style="display:flex; gap:1rem;">
+            <a href="https://calendly.com/vivaenglish79/30min" target="_blank" class="btn btn-gold">Fill My Calendar</a>
+            <a href="#" class="btn btn-ghost">Ask a Question</a>
+        </div>
     </div>
-  </div>
-  <div class="hero-scroll-cue">
-    <div class="hero-scroll-line"></div>
-    <span>Scroll</span>
-  </div>
 </section>
 
 <div class="marquee">
-  <div class="marquee-track">
-    <span>Airbnb & VRBO Copy</span><span>·</span><span>Guest Follow-Ups</span><span>·</span><span>Review Requests</span><span>·</span><span>Instagram Captions</span><span>·</span><span>Inquiry Replies</span><span>·</span><span>EN · ES · FR · DE</span><span>·</span><span>Seasonal Promos</span><span>·</span><span>Welcome Guides</span><span>·</span><span>Direct Bookings</span><span>·</span>
-    <span>Airbnb & VRBO Copy</span><span>·</span><span>Guest Follow-Ups</span><span>·</span><span>Review Requests</span><span>·</span><span>Instagram Captions</span><span>·</span><span>Inquiry Replies</span><span>·</span><span>EN · ES · FR · DE</span><span>·</span><span>Seasonal Promos</span><span>·</span><span>Welcome Guides</span><span>·</span><span>Direct Bookings</span><span>·</span>
-  </div>
+    <div class="marquee-track">
+        <span>Airbnb & VRBO Copy</span><span>·</span><span>Guest Follow-Ups</span><span>·</span><span>Review Requests</span><span>·</span><span>Instagram Captions</span><span>·</span><span>Inquiry Replies</span><span>·</span><span>EN · ES · FR · DE</span><span>·</span><span>Seasonal Promos</span><span>·</span><span>Direct Bookings</span><span>·</span>
+        <span>Airbnb & VRBO Copy</span><span>·</span><span>Guest Follow-Ups</span><span>·</span><span>Review Requests</span><span>·</span><span>Instagram Captions</span><span>·</span><span>Inquiry Replies</span><span>·</span><span>EN · ES · FR · DE</span><span>·</span><span>Seasonal Promos</span><span>·</span><span>Direct Bookings</span><span>·</span>
+    </div>
 </div>
 
 <section class="section section-white">
-  <div class="inner">
-    <div class="two-col">
-      <div class="reveal visible">
-        <span class="label">Why Your Villa Sits Empty</span>
-        <h2 class="heading-lg">The villa next door<br>isn't better. It just<br>looks that way.</h2>
-        <div class="body-text dark">
-          <p>Guests book the villa with the better Airbnb description — not the better view. They book the one that followed up within an hour.</p>
-        </div>
-        <a href="https://calendly.com/vivaenglish79/30min" target="_blank" class="btn btn-black" style="margin-top:2.5rem">Start Filling Nights</a>
-      </div>
-      <div class="reveal visible">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#e0e0e0;">
-            <div style="background:var(--off-white); padding:2.5rem;">
-                <div style="font-family:'Barlow Condensed'; font-weight:800; font-size:3rem; color:var(--gold);">8h</div>
-                <div style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase;">saved / wk</div>
+    <div class="inner">
+        <div class="two-col">
+            <div class="reveal">
+                <span class="label">Why Your Villa Sits Empty</span>
+                <h2 class="heading-lg">The villa next door isn't better. It just looks that way.</h2>
+                <div class="body-text">
+                    <p>Guests book the villa with the better Airbnb description — not the better view. They book the one that followed up within an hour. The one with five-star reviews because someone asked for them.</p>
+                    <p>Agency AI gives you the content engine your villa needs. Every guest touchpoint automated, in your voice, in their language.</p>
+                </div>
+                <a href="https://calendly.com/vivaenglish79/30min" target="_blank" class="btn btn-black" style="margin-top:2.5rem">Start Filling Nights</a>
             </div>
-            <div style="background:var(--black); padding:2.5rem;">
-                <div style="font-family:'Barlow Condensed'; font-weight:800; font-size:3rem; color:var(--gold);">2m</div>
-                <div style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:white;">setup</div>
+            <div class="reveal">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--gray-line);">
+                    <div style="background:var(--off-white); padding:2.5rem;">
+                        <div style="font-weight:800; font-size:3.5rem; color:var(--gold); font-family:'Barlow Condensed';">8h</div>
+                        <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em;">Saved Per Week</p>
+                    </div>
+                    <div style="background:var(--black); padding:2.5rem; color:white;">
+                        <div style="font-weight:800; font-size:3.5rem; color:var(--gold); font-family:'Barlow Condensed';">4</div>
+                        <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em;">Languages</p>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <div class="img-strip">
-  <div class="img-strip-item">
-    <img src="/images/hans-eiskonen--RQ8tGcn2EY-unsplash.jpg" alt="Villa view">
-  </div>
-  <div class="img-strip-item">
-    <img src="/images/mandy-choi-_qZ0us4az20-unsplash.jpg" alt="Coastal living">
-  </div>
-  <div class="img-strip-item">
-    <img src="/images/matthew-brodeur-DH_u2aV3nGM-unsplash.jpg" alt="Villa lifestyle">
-  </div>
-</div>
-
-<section class="direct-booking-section">
-  <div class="inner">
-    <div class="two-col">
-      <div class="reveal visible">
-        <span class="label">Direct Bookings Strategy</span>
-        <h2 class="heading-lg">Stop paying<br>Airbnb 15%.<br><span style="color:var(--gold)">Keep it.</span></h2>
-        <div class="body-text dark">
-          <p>Every booking through Airbnb or VRBO costs you 10–15% in platform fees. Over a season, it's your profit margin.</p>
-        </div>
-        <a href="https://calendly.com/vivaenglish79/30min" target="_blank" class="btn btn-black" style="margin-top:2rem">Build My Direct Strategy</a>
-      </div>
-      <div class="reveal visible">
-        <div class="fee-comparison">
-          <div class="fee-box fee-bad">
-            <div class="fee-label red">Via Airbnb</div>
-            <div class="fee-number red">−15%</div>
-          </div>
-          <div class="fee-box fee-good">
-            <div class="fee-label golden">Direct Booking</div>
-            <div class="fee-number golden">0%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="img-full">
-  <img src="/images/wil-stewart-K_TbABnVzHo-unsplash.jpg" alt="Ocean view">
-  <div class="img-full-overlay"></div>
+    <div class="img-strip-item"><img src="hans-eiskonen--RQ8tGcn2EY-unsplash.jpg" alt="Palms"></div>
+    <div class="img-strip-item"><img src="mandy-choi-_qZ0us4az20-unsplash.jpg" alt="Jungle"></div>
+    <div class="img-strip-item"><img src="matthew-brodeur-DH_u2aV3nGM-unsplash.jpg" alt="Beach"></div>
 </div>
 
 <section class="section section-black">
-  <div class="inner">
-    <div class="two-col" style="align-items:center;">
-      <div class="reveal visible" style="background-image:url('/images/gonzavespa150-sunset-8331285.jpg'); min-height:500px; background-size:cover; background-position:center;"></div>
-      <div class="reveal visible">
-        <span class="label">The Knowledge Graph</span>
-        <h2 class="heading-lg" style="color:var(--white)">This isn't ChatGPT.<br>It knows your villa.</h2>
-        <div class="body-text light">
-          <p>Agency AI is built on a knowledge graph — a structured map connecting your villa, your voice, and your guests.</p>
+    <div class="inner">
+        <div class="two-col" style="align-items:center;">
+            <div class="reveal" style="height:500px; background-image:url('gonzavespa150-sunset-8331285.jpg'); background-size:cover; background-position:center;"></div>
+            <div class="reveal">
+                <span class="label">The Knowledge Graph</span>
+                <h2 class="heading-lg" style="color:white;">It knows your villa.</h2>
+                <div class="body-text light">
+                    <p>Generic AI writes generic content. Agency AI is built on a knowledge graph — a structured map connecting your villa, your voice, your guests, and your market.</p>
+                    <p>It knows your peak seasons. It knows your tone. It ensures every message sounds like you, but works faster than you.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
-<footer style="background:var(--black); padding:5rem 3rem; text-align:center; border-top:1px solid rgba(255,255,255,0.1);">
-    <a href="#" class="nav-logo">Agency <span style="color:var(--gold)">AI</span></a>
-    <p style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-top:2rem;">© 2026 Agency AI. All rights reserved.</p>
+<section class="section section-white">
+    <div class="inner">
+        <span class="label">What Gets Automated</span>
+        <h2 class="heading-lg">Every touchpoint. Fixed.</h2>
+        <div class="three-col">
+            <div class="card reveal">
+                <div class="label" style="margin-bottom:1rem;">Platform</div>
+                <h3 class="card-title">Airbnb & VRBO</h3>
+                <p class="body-text">Descriptions that rank and convert. Headlines, highlights, and house rules tailored to each platform.</p>
+            </div>
+            <div class="card reveal">
+                <div class="label" style="margin-bottom:1rem;">Social</div>
+                <h3 class="card-title">Instagram</h3>
+                <p class="body-text">30 days of captions in 2 minutes. Narrative hooks for Reels and local discovery hashtag strategies.</p>
+            </div>
+            <div class="card reveal">
+                <div class="label" style="margin-bottom:1rem;">Flow</div>
+                <h3 class="card-title">Guest Messaging</h3>
+                <p class="body-text">Instant multi-lingual replies, review requests, and WhatsApp check-in sequences that build loyalty.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="img-full">
+    <img src="kanenori-sea-5499649.jpg" alt="Ocean Wave">
+    <div class="hero-overlay" style="background:rgba(0,0,0,0.3)"></div>
+</div>
+
+<footer class="section section-black" style="padding: 4rem 3rem;">
+    <div class="inner" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem;">
+        <div>
+            <a href="#" class="nav-logo">Agency <span style="color:var(--gold)">AI</span></a>
+            <p style="color:rgba(255,255,255,0.4); margin-top:1rem; font-size:0.8rem;">Fill your nights. Keep your profit.</p>
+        </div>
+        <div style="display:flex; gap:2rem;">
+            <a href="mailto:vivalancsweert@gmail.com" style="color:white; text-decoration:none; font-family:'Barlow Condensed'; font-size:0.9rem; text-transform:uppercase;">Contact Us</a>
+            <a href="https://calendly.com/vivaenglish79/30min" target="_blank" style="color:var(--gold); text-decoration:none; font-family:'Barlow Condensed'; font-size:0.9rem; text-transform:uppercase;">Book Strategy Call</a>
+        </div>
+    </div>
 </footer>
+
+<script>
+    // Simple Reveal Animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav Background Switch
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('mainNav');
+        if (window.scrollY > 50) nav.classList.add('light');
+        else nav.classList.remove('light');
+    });
+</script>
 
 </body>
 </html>
